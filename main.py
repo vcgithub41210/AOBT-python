@@ -39,6 +39,9 @@ def ai():
     llm = OpenAI(openai_api_key=os.getenv("API_KEY"))
 
     answer = llm.predict(text)
+    response_file = open("response.txt","w")
+    response_file.write(answer)
+    response_file.close()
     print(answer)
 
     threading.Thread(target=tts, args=(answer,)).start()
